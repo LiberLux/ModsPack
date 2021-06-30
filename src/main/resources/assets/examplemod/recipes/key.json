@@ -1,0 +1,21 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        " L ",
+        " L ",
+        " D "
+    ],
+    "key": {
+        "L": {
+            "item": "examplemod:best_stone"
+        },
+        "D": {
+            "item": "minecraft:wool",
+            "data": 32767
+        }
+    },
+    "result": {
+        "item": "examplemod:key",
+        "count": 5
+    }
+}
