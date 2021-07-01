@@ -1,5 +1,11 @@
 package com.example.examplemod.items;
 
+import com.example.examplemod.items.TestItem.ItemKey;
+import com.example.examplemod.items.Tools.Hoe;
+import com.example.examplemod.items.Tools.Sword;
+import com.example.examplemod.items.ToolsForKitchen.ToolForKitchen;
+import com.example.examplemod.items.eat.Food;
+import com.example.examplemod.items.seed.ItemCornSeeds;
 import net.minecraft.client.renderer.block.model.ModelBakery;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 
@@ -15,45 +21,37 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-/*
- * Указывает ModId для других ObjectHolder в классе
- * Если не добавлять аннотацию над классом, то каждый раз придётся прописывать ModId вручную.
- * Подробнее см. https://mcforge.readthedocs.io/en/latest/concepts/registries/#injecting-registry-values-into-fields
- */
+
 @GameRegistry.ObjectHolder("examplemod")
-@Mod.EventBusSubscriber// Автоматическая регистрация статичных обработчиков событий
+@Mod.EventBusSubscriber
 public class ItemsRegistry {
-    /*
-     * Получение предмета по ключу. Вы также можете использовать данную аннотацию для получения ванильных предметов
-     * Если вы не добавляли аннотация над классом, то в таком случаи вам нужно прописать вместо `key` -> `tut:key`
-     */
     @GameRegistry.ObjectHolder("key")
-    public static final Item KEY = null;
-    public static final ItemOutSword SWORD = null;
+    public static final Item KEY = new ItemKey();
+    public static final Item SWORD = new Sword("sword", Item.ToolMaterial.DIAMOND);
+    public static final Item CORN_SEED = new ItemCornSeeds("corn_seed");
+    public static final Item KNIFE = new ToolForKitchen("knife");
+    public static final Item HOE = new Hoe("hoe", Item.ToolMaterial.DIAMOND);
 
 
-    /*
-     * Начиная с 1.12 регистрацию предметов/блоков/моделей и т.п. следует проводить в специальном событии.
-     * Событие Register<IForgeRegistryEntry> поддерживает регистрацию: Block, Item, Potion, Biome, SoundEvent,
-     * PotionType, Enchantment, IRecipe,  VillagerProfession, EntityEntry.
-     * Обратите внимание! Метод является статичным, так как мы используем EventBusSubscriber
-     */
+
+
     @SubscribeEvent
     public static void onRegistryItem(RegistryEvent.Register<Item> e) {
-        // Также вместо `register` можно использовать `registerAll`, чтобы прописать все предметы разом
-        e.getRegistry().registerAll(new ItemKey(),  new ItemOutSword("sword", Item.ToolMaterial.DIAMOND));
+        e.getRegistry().registerAll(KEY,SWORD,CORN_SEED,KNIFE,HOE);
     }
 
-    /*
-     * Начиная с 1.11 регистрацию моделей для предметов/блоков следует проводить в специальном событии.
-     * Обратите внимание! Метод является статичным, так как мы используем EventBusSubscriber
-     */
+
     @SubscribeEvent
     @SideOnly(Side.CLIENT)
     public static void onRegistryModel(ModelRegistryEvent e) {
         registryModel(KEY);
         registryModel(SWORD);
+        registryModel(CORN_SEED);
+        registryModel(KNIFE);
+        registryModel(HOE);
+
     }
+
     @SideOnly(Side.CLIENT)
     private static void registryModel(Item item) {
         final ResourceLocation regName = item.getRegistryName();// Не забываем, что getRegistryName может вернуть Null!

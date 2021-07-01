@@ -1,12 +1,15 @@
 package com.example.examplemod;
 
+import com.example.examplemod.GUI.GuiMysteriousStranger;
 import com.example.examplemod.blocks.BlocksRegister;
 import com.example.examplemod.items.ItemsRegistry;
 import com.example.examplemod.proxy.CommonProxy;
+import net.minecraft.client.Minecraft;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.util.EnumHelper;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
@@ -35,6 +38,12 @@ public class ExampleMod
         logger.info("DIRT BLOCK >> {}", Blocks.DIRT.getRegistryName());
         BlocksRegister.registerRender();
     }
+
+    void  openMyGui ()
+    {
+        Minecraft.getMinecraft().displayGuiScreen(new GuiMysteriousStranger());
+    }
+
     public static final CreativeTabs CTAB = new CreativeTabs("examplemod") {
         @Override
         public ItemStack getTabIconItem() {
