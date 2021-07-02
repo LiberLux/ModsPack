@@ -1,6 +1,25 @@
 itemGroup.examplemod=ExampleMod
 
 item.key.name=Ключ
+item.potatoes.name=Картофанчик
+item.Carrot.name=Морковка
+item.Cucumbers.name=Огурцы
+item.Tomatoes.name=Помидоры
+item.Cabbage.name=Капуста
+item.Turnip.name=Репа
+item.Onion.name=Лук
+item.Garlic.name=Чеснок
+item.Grapes.name=Виноград
+item.Corn.name=Кукуруза
+item.Rice.name=Рис
+item.Wheat.name=Пшеница
+item.Beet.name=Свекла
+item.Apples.name=Яблоки
+item.Radish.name=Редис
+item.Horseradish.name=Хрен	
+item.Pepper.name=Перец
+item.Cinnamon.name=Корица
+item.Vanilla.name=Ваниль
 
 tile.best_stone.name=Лучший Камень
 

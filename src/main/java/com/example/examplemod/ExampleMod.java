@@ -50,6 +50,12 @@ public class ExampleMod
             return new ItemStack(ItemsRegistry.KEY);
         }
     };
+    public static final CreativeTabs FOOD = new CreativeTabs("FOOD") {
+        @Override
+        public ItemStack getTabIconItem() {
+            return new ItemStack(ItemsRegistry.KEY);
+        }
+    };
 }
 
 

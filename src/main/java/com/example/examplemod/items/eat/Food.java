@@ -13,7 +13,7 @@ public class Food extends ItemFood {
         super(amount, saturation, isWolfFood);
         this.setRegistryName(name);
         this.setUnlocalizedName(name);
-        setCreativeTab(ExampleMod.CTAB);
+        setCreativeTab(ExampleMod.FOOD);
     }
 
     @Override
